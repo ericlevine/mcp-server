@@ -1,0 +1,19 @@
+README.md
+  s_9a74d2be86245b::t_e1d01701f5cd0c 100
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "b23f44e87c59c4c5f8edf8f0ac9a3691cf0f950b",
+  "prompts": {},
+  "sessions": {
+    "s_9a74d2be86245b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7f052ff1-59e9-461e-b019-7fbf6e160ae7",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Eric Levine <eric@clawvisor.com>"
+    }
+  }
+}
