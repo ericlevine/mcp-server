@@ -1,0 +1,23 @@
+package.json
+  s_9a74d2be86245b::t_67b1fd71697059 42
+pnpm-lock.yaml
+  s_9a74d2be86245b::t_b8b93c5a1fc6b7 44-45,2040-2041,2046,5201
+src/tools/watch.ts
+  s_9a74d2be86245b::t_1559028ee4f569 57-67,89-108,110-158
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "ea0cafb306707b9a02cf763930bdcca1dbe37fea",
+  "prompts": {},
+  "sessions": {
+    "s_9a74d2be86245b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7f052ff1-59e9-461e-b019-7fbf6e160ae7",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Eric Levine <eric@clawvisor.com>"
+    }
+  }
+}
