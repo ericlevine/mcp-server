@@ -1,0 +1,19 @@
+src/webhooks/channel3.ts
+  s_9a74d2be86245b::t_d1a76bf8590c3d 10,22-24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "da55fa6aa44aea52e2babbeb155edec9028130cc",
+  "prompts": {},
+  "sessions": {
+    "s_9a74d2be86245b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7f052ff1-59e9-461e-b019-7fbf6e160ae7",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Eric Levine <eric@clawvisor.com>"
+    }
+  }
+}
