@@ -1,0 +1,29 @@
+package.json
+  s_9a74d2be86245b::t_130307becf0b83 42
+pnpm-lock.yaml
+  s_9a74d2be86245b::t_1524fe80e272d3 44-45,2040-2042,2045,2047,5198,5201
+src/tools/watch.ts
+  s_9a74d2be86245b::t_617e089429666e 55-59,61,65,76,83,85-117,119-150,153-155,162,170,184,203
+src/wakeshift/events.ts
+  s_9a74d2be86245b::t_e385f6c79c401e 85,95,109
+src/wakeshift/index.ts
+  s_9a74d2be86245b::t_93b0d06bd1a612 11
+src/webhooks/channel3.ts
+  s_9a74d2be86245b::t_fa027f37c600f5 1,253-254,256-262
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "de36c5050d68022af00596d558bb24a966080d97",
+  "prompts": {},
+  "sessions": {
+    "s_9a74d2be86245b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7f052ff1-59e9-461e-b019-7fbf6e160ae7",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Eric Levine <eric@clawvisor.com>"
+    }
+  }
+}
