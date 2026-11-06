@@ -1,4 +1,4 @@
-import { WakeshiftError } from "@wakeshift/sdk";
+import { APIError, isWakeshiftError } from "@wakeshift/sdk";
 import { z } from "zod";
 
 import { cancelSubscription, retrieveSubscription } from "../channel3/subscriptions";
@@ -250,12 +250,16 @@ export async function handleChannel3Webhook(
 	} catch (err) {
 		console.error("channel3 webhook relay failed", event.id, String(err));
 		if (err instanceof z.ZodError) return abort(400, "unrecognized event data");
+		// A retry won't help a 4xx from Wakeshift (but 429 and 401 may pass) or a payload the
+		// SDK refused before sending. No answer at all (APIConnectionError) has status null.
 		const permanent =
-			err instanceof WakeshiftError &&
-			err.status >= 400 &&
-			err.status < 500 &&
-			err.status !== 429 &&
-			err.status !== 401;
+			(err instanceof APIError &&
+				err.status !== null &&
+				err.status >= 400 &&
+				err.status < 500 &&
+				err.status !== 429 &&
+				err.status !== 401) ||
+			isWakeshiftError(err, "bad_arguments");
 		return permanent
 			? abort(422, "event rejected")
 			: new Response("relay failed", { status: 503 });

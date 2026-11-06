@@ -8,7 +8,7 @@ export type WakeshiftApp = { wake: Wakeshift; events: WatchEvents };
 let cached: { key: string; app: WakeshiftApp } | null = null;
 
 // A Worker's secrets arrive with each request, so the client is made on the first one
-// and kept, as Wakeshift's Cloudflare Workers guide does.
+// and kept.
 export function getWakeshift(env: Bindings): WakeshiftApp | null {
 	const key = env.WAKESHIFT_KEY?.trim();
 	if (!key) return null;
