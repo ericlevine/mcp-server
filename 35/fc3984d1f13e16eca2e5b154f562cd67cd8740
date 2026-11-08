@@ -1,0 +1,21 @@
+src/tools/watch.ts
+  s_9a74d2be86245b::t_4049f53bb2f853 182-187,189,199-200
+src/wakeshift/events.ts
+  s_9a74d2be86245b::t_f97339200d21f0 83,95,109
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "35fc3984d1f13e16eca2e5b154f562cd67cd8740",
+  "prompts": {},
+  "sessions": {
+    "s_9a74d2be86245b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7f052ff1-59e9-461e-b019-7fbf6e160ae7",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Eric Levine <eric@clawvisor.com>"
+    }
+  }
+}
