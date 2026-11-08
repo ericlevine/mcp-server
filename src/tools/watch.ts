@@ -179,11 +179,14 @@ export function registerWatchTools(server: McpServer, ctx: ToolContext, app: Wak
 						await call.unsubscribe(price, args),
 						await call.unsubscribe(availability, args),
 					].some(Boolean);
-					// Without a session_key, Wakeshift may not know which conversation this is, and
-					// "not ended" would wrongly read as "wasn't watching" while alerts keep coming.
-					if (!ended && !(await call.resolveSession())) {
+					// ChatGPT subscribes itself (native): unsubscribe ends the user's own subscriptions,
+					// so "not ended" means there was none, and it gets the plain answer, never a request
+					// to call again. For any other agent without a session_key, Wakeshift may not know
+					// which conversation this is, and "not ended" would wrongly read as "wasn't
+					// watching" while alerts keep coming.
+					if (!ended && !call.native && !(await call.resolveSession())) {
 						throw new Error(
-							"Couldn't tell which conversation this is, so the watch may still be active. Call unwatch_product again with the session_key from watch_product's result.",
+							`Watch ${p.watch_id} may still be active: this call didn't say which conversation it's from. To stop it, pass the session_key from watch_product's result to unwatch_product.`,
 						);
 					}
 					return { watch_id: p.watch_id, ended, thread_id: threadId };
@@ -193,8 +196,8 @@ export function registerWatchTools(server: McpServer, ctx: ToolContext, app: Wak
 					summarize: (r) =>
 						[
 							r.ended
-								? "Stopped this watch."
-								: "This conversation wasn't running that watch.",
+								? `Stopped watch ${r.watch_id}: no more price or stock alerts from it.`
+								: `No active watch ${r.watch_id} here, so there was nothing to stop.`,
 							"",
 							...threadIdSummaryLines(threadId),
 						].join("\n"),

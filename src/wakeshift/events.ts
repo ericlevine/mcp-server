@@ -80,7 +80,7 @@ function variant(selection: { label: string }[] | null): string {
 }
 
 const followUp = (p: { watch_id: string }) =>
-	`Call get_products with this product ID for current offers. To stop this alert, call unwatch_product with watch_id ${p.watch_id}.`;
+	`Current offers: get_products. Stop: unwatch_product, watch_id ${p.watch_id}.`;
 
 // The line the woken agent reads first. Wakeshift trims text over 1000 bytes itself.
 export function priceText(p: PricePayload): string {
@@ -92,7 +92,7 @@ export function priceText(p: PricePayload): string {
 			: p.current.price > p.previous.price
 				? "rose"
 				: "changed";
-	return `Price ${verb} on Channel3 product ${p.product_id}${variant(p.selection)} at ${p.domain}: ${from} → ${to}. ${followUp(p)}`;
+	return `Price ${verb}: ${p.product_id}${variant(p.selection)} at ${p.domain}, ${from} → ${to}. ${followUp(p)}`;
 }
 
 function availabilityChange(p: AvailabilityPayload): string {
@@ -106,7 +106,7 @@ function availabilityChange(p: AvailabilityPayload): string {
 }
 
 export function availabilityText(p: AvailabilityPayload): string {
-	return `Channel3 product ${p.product_id}${variant(p.selection)} ${availabilityChange(p)}. ${followUp(p)}`;
+	return `${p.product_id}${variant(p.selection)} ${availabilityChange(p)}. ${followUp(p)}`;
 }
 
 export function defineWatchEvents(wake: Wakeshift) {
